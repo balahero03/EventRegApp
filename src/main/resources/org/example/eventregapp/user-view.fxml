@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.eventregapp.UserController">
+    <top>
+        <VBox spacing="10.0">
+            <padding>
+                <Insets bottom="10.0" left="20.0" right="20.0" top="20.0"/>
+            </padding>
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+                <Label text="User Dashboard" textAlignment="CENTER">
+                    <font>
+                        <Font name="System Bold" size="24.0"/>
+                    </font>
+                </Label>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="welcomeLabel" text="Welcome, User!" textAlignment="CENTER">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+                <Button fx:id="logoutButton" text="Logout" onAction="#handleLogout" style="-fx-background-color: #dc3545; -fx-text-fill: white;">
+                    <font>
+                        <Font size="12.0"/>
+                    </font>
+                </Button>
+            </HBox>
+            <Separator/>
+        </VBox>
+    </top>
+    
+    <center>
+        <VBox spacing="15.0">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+            </padding>
+            
+            <!-- Events Table -->
+            <VBox spacing="20.0" style="-fx-background-color: #ffffff; -fx-padding: 30; -fx-background-radius: 12; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-border-radius: 12;">
+                <Label text="Available Events" style="-fx-font-weight: bold; -fx-font-size: 20px; -fx-text-fill: #2c3e50;"/>
+                <TableView fx:id="eventsTable" prefHeight="450.0" style="-fx-background-color: white; -fx-border-color: #dee2e6; -fx-border-radius: 8;">
+                    <columns>
+                        <TableColumn fx:id="eventNameColumn" text="Event Name" prefWidth="250.0"/>
+                        <TableColumn fx:id="eventDateColumn" text="Date" prefWidth="150.0"/>
+                        <TableColumn fx:id="totalSeatsColumn" text="Total Seats" prefWidth="120.0"/>
+                        <TableColumn fx:id="availableSeatsColumn" text="Available" prefWidth="120.0"/>
+                    </columns>
+                </TableView>
+                
+                <!-- Registration Buttons -->
+                <HBox spacing="20.0" alignment="CENTER_LEFT">
+                    <Button fx:id="registerButton" text="Register for Event" onAction="#registerForEvent" 
+                            style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12 25; -fx-background-radius: 6;">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </Button>
+                    <Button fx:id="unregisterButton" text="Unregister from Event" onAction="#unregisterFromEvent" 
+                            style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12 25; -fx-background-radius: 6;">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </Button>
+                </HBox>
+                
+                <Label fx:id="eventStatusLabel" textFill="#dc3545" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

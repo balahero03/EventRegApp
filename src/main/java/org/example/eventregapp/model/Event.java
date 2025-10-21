@@ -23,6 +23,9 @@ public class Event {
     @Column(name = "total_seats", nullable = false)
     private Integer totalSeats;
 
+    @Column(name = "registration_count")
+    private Integer registrationCount = 0;
+
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Registration> registrations = new HashSet<>();
 
@@ -78,14 +81,39 @@ public class Event {
         this.registrations = registrations;
     }
 
+    public Integer getRegistrationCount() {
+        return registrationCount;
+    }
+
+    public void setRegistrationCount(Integer registrationCount) {
+        this.registrationCount = registrationCount;
+    }
+
     // Helper method to get available seats
     public int getAvailableSeats() {
-        return totalSeats - registrations.size();
+        return totalSeats - registrationCount;
     }
 
     // Helper method to check if event is full
     public boolean isFull() {
-        return registrations.size() >= totalSeats;
+        return registrationCount >= totalSeats;
+    }
+
+    // Helper method to check if event is available for registration
+    public boolean isAvailable() {
+        return !isFull() && eventDate.isAfter(java.time.LocalDate.now());
+    }
+
+    // Helper method to increment registration count
+    public void incrementRegistrationCount() {
+        this.registrationCount++;
+    }
+
+    // Helper method to decrement registration count
+    public void decrementRegistrationCount() {
+        if (this.registrationCount > 0) {
+            this.registrationCount--;
+        }
     }
 
     @Override

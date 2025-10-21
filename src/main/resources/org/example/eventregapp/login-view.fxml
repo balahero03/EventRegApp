@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.eventregapp.LoginController">
+    <center>
+        <VBox alignment="CENTER" spacing="20.0">
+            <padding>
+                <Insets bottom="50.0" left="50.0" right="50.0" top="50.0"/>
+            </padding>
+            
+            <!-- Title -->
+            <VBox alignment="CENTER" spacing="10.0">
+                <Label text="Event Registration System" textAlignment="CENTER">
+                    <font>
+                        <Font name="System Bold" size="28.0"/>
+                    </font>
+                </Label>
+                <Label text="Please login to continue" textAlignment="CENTER">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+            </VBox>
+            
+            <!-- Login Form -->
+            <VBox spacing="25.0" style="-fx-background-color: #ffffff; -fx-padding: 40; -fx-background-radius: 15; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-border-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+                <Label text="Login" textAlignment="CENTER" style="-fx-text-fill: #2c3e50;">
+                    <font>
+                        <Font name="System Bold" size="24.0"/>
+                    </font>
+                </Label>
+                
+                <GridPane hgap="15.0" vgap="20.0">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="100.0" prefWidth="120.0"/>
+                        <ColumnConstraints minWidth="250.0" prefWidth="300.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="40.0"/>
+                        <RowConstraints minHeight="40.0"/>
+                    </rowConstraints>
+                    
+                    <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-text-fill: #495057;">
+                        <font>
+                            <Font name="System Bold" size="14.0"/>
+                        </font>
+                    </Label>
+                    <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="0" promptText="Enter your email" 
+                              style="-fx-background-color: white; -fx-border-color: #ced4da; -fx-border-radius: 6; -fx-padding: 12; -fx-font-size: 14px;"/>
+                    
+                    <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-text-fill: #495057;">
+                        <font>
+                            <Font name="System Bold" size="14.0"/>
+                        </font>
+                    </Label>
+                    <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="Enter your password" 
+                                  style="-fx-background-color: white; -fx-border-color: #ced4da; -fx-border-radius: 6; -fx-padding: 12; -fx-font-size: 14px;"/>
+                </GridPane>
+                
+                <VBox spacing="15.0" alignment="CENTER">
+                    <Button fx:id="loginButton" text="Login" onAction="#handleLogin" 
+                           style="-fx-background-color: #0078d4; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 15 30; -fx-background-radius: 8; -fx-font-size: 16px;">
+                    </Button>
+                    
+                    <Button fx:id="signupButton" text="Create New Account" onAction="#handleSignup" 
+                           style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 15 30; -fx-background-radius: 8; -fx-font-size: 16px;">
+                    </Button>
+                </VBox>
+                
+                <Label fx:id="statusLabel" textFill="#dc3545" textAlignment="CENTER" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

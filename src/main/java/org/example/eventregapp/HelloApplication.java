@@ -4,6 +4,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.example.eventregapp.util.DataInitializer;
+import org.example.eventregapp.util.LoginTest;
 
 import java.io.IOException;
 
@@ -14,10 +16,18 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
-        stage.setTitle("Event Registration System");
+        // Initialize default data (admin and user accounts)
+        DataInitializer.initializeDefaultData();
+
+        // Test login connection to Participant table
+        LoginTest.testLoginConnection();
+
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 500, 400);
+        stage.setTitle("Login - Event Registration System");
         stage.setScene(scene);
+        stage.setResizable(false);
+        stage.centerOnScreen();
         stage.show();
     }
 
