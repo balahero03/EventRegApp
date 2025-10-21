@@ -85,24 +85,9 @@ public class AdminController {
     @FXML
     private Button logoutButton;
 
-    // Registration management components
-    @FXML
-    private TableView<Registration> registrationsTable;
-    @FXML
-    private TableColumn<Registration, String> registrationParticipantColumn;
-    @FXML
-    private TableColumn<Registration, String> registrationEventColumn;
-    @FXML
-    private TableColumn<Registration, String> registrationDateColumn;
-    @FXML
-    private Button removeRegistrationButton;
-    @FXML
-    private Label registrationStatusLabel;
-
     // Observable lists
     private ObservableList<Event> eventsList;
     private ObservableList<Participant> usersList;
-    private ObservableList<Registration> registrationsList;
 
     public void setCurrentUser(Participant user) {
         this.currentUser = user;
@@ -130,12 +115,10 @@ public class AdminController {
             // Initialize observable lists
             eventsList = FXCollections.observableArrayList();
             usersList = FXCollections.observableArrayList();
-            registrationsList = FXCollections.observableArrayList();
 
             // Setup table columns
             setupEventTableColumns();
             setupUserTableColumns();
-            setupRegistrationTableColumns();
 
             // Load initial data
             loadEvents();
@@ -158,20 +141,6 @@ public class AdminController {
         userNameColumn.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         userEmailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
         userRoleColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
-    }
-
-    private void setupRegistrationTableColumns() {
-        registrationParticipantColumn.setCellValueFactory(cellData -> {
-            Registration registration = cellData.getValue();
-            return new javafx.beans.property.SimpleStringProperty(
-                    registration.getParticipant().getFullName());
-        });
-        registrationEventColumn.setCellValueFactory(cellData -> {
-            Registration registration = cellData.getValue();
-            return new javafx.beans.property.SimpleStringProperty(
-                    registration.getEvent().getEventName());
-        });
-        registrationDateColumn.setCellValueFactory(new PropertyValueFactory<>("registrationDate"));
     }
 
     // Event CRUD Operations
@@ -284,36 +253,7 @@ public class AdminController {
     // Registration Management Operations
     @FXML
     private void viewEventRegistrations() {
-        Event selectedEvent = eventsTable.getSelectionModel().getSelectedItem();
-        if (selectedEvent == null) {
-            eventStatusLabel.setText("Please select an event to view registrations");
-            return;
-        }
-
-        List<Registration> registrations = RegistrationService.getEventRegistrations(selectedEvent);
-        registrationsList.clear();
-        registrationsList.addAll(registrations);
-        registrationsTable.setItems(registrationsList);
-
-        eventStatusLabel
-                .setText("Showing " + registrations.size() + " registrations for " + selectedEvent.getEventName());
-    }
-
-    @FXML
-    private void removeRegistration() {
-        Registration selectedRegistration = registrationsTable.getSelectionModel().getSelectedItem();
-        if (selectedRegistration == null) {
-            registrationStatusLabel.setText("Please select a registration to remove");
-            return;
-        }
-
-        String result = RegistrationService.removeRegistrationById(selectedRegistration.getRegistrationId());
-        registrationStatusLabel.setText(result);
-
-        if (result.contains("successful")) {
-            viewEventRegistrations(); // Refresh the registrations list
-            loadEvents(); // Refresh events to update available seats
-        }
+        RegistrationController.showRegistrationWindow();
     }
 
     // User Management Operations
@@ -426,7 +366,7 @@ public class AdminController {
 
             Stage stage = (Stage) logoutButton.getScene().getWindow();
             stage.setScene(scene);
-            stage.setTitle("Login - Event Registration System");
+            stage.setTitle("INVENTE'25 | SSN College of Engineering");
             stage.centerOnScreen();
 
         } catch (IOException e) {

@@ -151,7 +151,7 @@ public class UserController {
 
             Stage stage = (Stage) logoutButton.getScene().getWindow();
             stage.setScene(scene);
-            stage.setTitle("Login - Event Registration System");
+            stage.setTitle("INVENTE'25 | SSN College of Engineering");
             stage.centerOnScreen();
 
         } catch (IOException e) {

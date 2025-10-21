@@ -5,15 +5,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.eventregapp.HelloController">
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.eventregapp.HelloController" style="-fx-background-color: #f8f9fa;">
     <top>
-        <VBox spacing="10.0">
+        <VBox spacing="10.0" maxWidth="Infinity">
             <padding>
                 <Insets bottom="10.0" left="20.0" right="20.0" top="20.0"/>
             </padding>
-            <Label text="Event Registration System - CRUD Operations" textAlignment="CENTER">
+            <Label text="INVENTE'25 — SSN College of Engineering" textAlignment="CENTER">
                 <font>
-                    <Font name="System Bold" size="24.0"/>
+                    <Font name="System Bold" size="18.0"/>
                 </font>
                 
             </Label>
@@ -22,57 +22,57 @@
     </top>
     
     <center>
-        <TabPane tabClosingPolicy="UNAVAILABLE">
+        <TabPane tabClosingPolicy="UNAVAILABLE" maxWidth="Infinity" maxHeight="Infinity">
             <tabs>
                 <!-- Events Tab -->
                 <Tab text="Events">
-                    <VBox spacing="15.0">
+                    <VBox spacing="15.0" maxWidth="Infinity" maxHeight="Infinity">
                         <padding>
-                            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
                         </padding>
                         
                         <!-- Event Form -->
-                        <VBox spacing="10.0">
-                            <Label text="Event Management" style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
-                            <GridPane hgap="10.0" vgap="10.0">
+                        <VBox spacing="8.0">
+                            <Label text="Event Management" style="-fx-font-weight: bold; -fx-font-size: 12px;"/>
+                            <GridPane hgap="8.0" vgap="8.0">
                                 <columnConstraints>
-                                    <ColumnConstraints minWidth="100.0" prefWidth="100.0"/>
-                                    <ColumnConstraints minWidth="200.0" prefWidth="200.0"/>
+                                    <ColumnConstraints minWidth="80.0" prefWidth="80.0"/>
+                                    <ColumnConstraints minWidth="150.0" prefWidth="150.0"/>
                                 </columnConstraints>
                                 <rowConstraints>
-                                    <RowConstraints/>
-                                    <RowConstraints/>
-                                    <RowConstraints/>
+                                    <RowConstraints minHeight="28.0"/>
+                                    <RowConstraints minHeight="28.0"/>
+                                    <RowConstraints minHeight="28.0"/>
                                 </rowConstraints>
                                 
-                                <Label text="Event Name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-                                <TextField fx:id="eventNameField" GridPane.columnIndex="1" GridPane.rowIndex="0" promptText="Enter event name"/>
+                                <Label text="Event Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-size: 11px;"/>
+                                <TextField fx:id="eventNameField" GridPane.columnIndex="1" GridPane.rowIndex="0" promptText="Enter event name" style="-fx-font-size: 11px; -fx-padding: 4;"/>
                                 
-                                <Label text="Date (YYYY-MM-DD):" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-                                <TextField fx:id="eventDateField" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="2024-12-31"/>
+                                <Label text="Date (YYYY-MM-DD):" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-size: 11px;"/>
+                                <TextField fx:id="eventDateField" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="2024-12-31" style="-fx-font-size: 11px; -fx-padding: 4;"/>
                                 
-                                <Label text="Total Seats:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-                                <TextField fx:id="totalSeatsField" GridPane.columnIndex="1" GridPane.rowIndex="2" promptText="100"/>
+                                <Label text="Total Seats:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-size: 11px;"/>
+                                <TextField fx:id="totalSeatsField" GridPane.columnIndex="1" GridPane.rowIndex="2" promptText="100" style="-fx-font-size: 11px; -fx-padding: 4;"/>
                             </GridPane>
                             
-                            <HBox spacing="10.0">
-                                <Button fx:id="addEventButton" text="Add Event" onAction="#addEvent"/>
-                                <Button fx:id="updateEventButton" text="Update Event" onAction="#updateEvent"/>
-                                <Button fx:id="deleteEventButton" text="Delete Event" onAction="#deleteEvent"/>
+                            <HBox spacing="8.0">
+                                <Button fx:id="addEventButton" text="Add Event" onAction="#addEvent" style="-fx-font-size: 10px; -fx-padding: 4 8;"/>
+                                <Button fx:id="updateEventButton" text="Update Event" onAction="#updateEvent" style="-fx-font-size: 10px; -fx-padding: 4 8;"/>
+                                <Button fx:id="deleteEventButton" text="Delete Event" onAction="#deleteEvent" style="-fx-font-size: 10px; -fx-padding: 4 8;"/>
                             </HBox>
                             
-                            <Label fx:id="eventStatusLabel" textFill="RED"/>
+                            <Label fx:id="eventStatusLabel" textFill="RED" style="-fx-font-size: 10px;"/>
                         </VBox>
                         
                         <!-- Events Table -->
-                        <VBox spacing="10.0">
-                            <Label text="Events List" style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
-                            <TableView fx:id="eventsTable" prefHeight="200.0">
+                        <VBox spacing="8.0">
+                            <Label text="Events List" style="-fx-font-weight: bold; -fx-font-size: 12px;"/>
+                            <TableView fx:id="eventsTable" prefHeight="150.0" style="-fx-font-size: 10px;">
                                 <columns>
-                                    <TableColumn fx:id="eventNameColumn" text="Event Name" prefWidth="200.0"/>
-                                    <TableColumn fx:id="eventDateColumn" text="Date" prefWidth="120.0"/>
-                                    <TableColumn fx:id="totalSeatsColumn" text="Total Seats" prefWidth="100.0"/>
-                                    <TableColumn fx:id="availableSeatsColumn" text="Available" prefWidth="100.0"/>
+                                    <TableColumn fx:id="eventNameColumn" text="Event Name" prefWidth="150.0"/>
+                                    <TableColumn fx:id="eventDateColumn" text="Date" prefWidth="100.0"/>
+                                    <TableColumn fx:id="totalSeatsColumn" text="Total Seats" prefWidth="80.0"/>
+                                    <TableColumn fx:id="availableSeatsColumn" text="Available" prefWidth="80.0"/>
                                 </columns>
                             </TableView>
                         </VBox>
@@ -81,56 +81,56 @@
                 
                 <!-- Participants Tab -->
                 <Tab text="Participants">
-                    <VBox spacing="15.0">
+                    <VBox spacing="15.0" maxWidth="Infinity" maxHeight="Infinity">
                         <padding>
-                            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
                         </padding>
                         
                         <!-- Participant Form -->
-                        <VBox spacing="10.0">
-                            <Label text="Participant Management" style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
-                            <GridPane hgap="10.0" vgap="10.0">
+                        <VBox spacing="8.0">
+                            <Label text="Participant Management" style="-fx-font-weight: bold; -fx-font-size: 12px;"/>
+                            <GridPane hgap="8.0" vgap="8.0">
                                 <columnConstraints>
-                                    <ColumnConstraints minWidth="100.0" prefWidth="100.0"/>
-                                    <ColumnConstraints minWidth="200.0" prefWidth="200.0"/>
+                                    <ColumnConstraints minWidth="80.0" prefWidth="80.0"/>
+                                    <ColumnConstraints minWidth="150.0" prefWidth="150.0"/>
                                 </columnConstraints>
                                 <rowConstraints>
-                                    <RowConstraints/>
-                                    <RowConstraints/>
-                                    <RowConstraints/>
-                                    <RowConstraints/>
+                                    <RowConstraints minHeight="28.0"/>
+                                    <RowConstraints minHeight="28.0"/>
+                                    <RowConstraints minHeight="28.0"/>
+                                    <RowConstraints minHeight="28.0"/>
                                 </rowConstraints>
                                 
-                                <Label text="Full Name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-                                <TextField fx:id="participantNameField" GridPane.columnIndex="1" GridPane.rowIndex="0" promptText="Enter full name"/>
+                                <Label text="Full Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-size: 11px;"/>
+                                <TextField fx:id="participantNameField" GridPane.columnIndex="1" GridPane.rowIndex="0" promptText="Enter full name" style="-fx-font-size: 11px; -fx-padding: 4;"/>
                                 
-                                <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-                                <TextField fx:id="participantEmailField" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="Enter email"/>
+                                <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-size: 11px;"/>
+                                <TextField fx:id="participantEmailField" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="Enter email" style="-fx-font-size: 11px; -fx-padding: 4;"/>
                                 
-                                <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-                                <TextField fx:id="participantPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="2" promptText="Enter password"/>
+                                <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-size: 11px;"/>
+                                <TextField fx:id="participantPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="2" promptText="Enter password" style="-fx-font-size: 11px; -fx-padding: 4;"/>
                                 
-                                <Label text="Role:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-                                <TextField fx:id="participantRoleField" GridPane.columnIndex="1" GridPane.rowIndex="3" promptText="admin/user"/>
+                                <Label text="Role:" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-font-size: 11px;"/>
+                                <TextField fx:id="participantRoleField" GridPane.columnIndex="1" GridPane.rowIndex="3" promptText="admin/user" style="-fx-font-size: 11px; -fx-padding: 4;"/>
                             </GridPane>
                             
-                            <HBox spacing="10.0">
-                                <Button fx:id="addParticipantButton" text="Add Participant" onAction="#addParticipant"/>
-                                <Button fx:id="updateParticipantButton" text="Update Participant" onAction="#updateParticipant"/>
-                                <Button fx:id="deleteParticipantButton" text="Delete Participant" onAction="#deleteParticipant"/>
+                            <HBox spacing="8.0">
+                                <Button fx:id="addParticipantButton" text="Add Participant" onAction="#addParticipant" style="-fx-font-size: 10px; -fx-padding: 4 8;"/>
+                                <Button fx:id="updateParticipantButton" text="Update Participant" onAction="#updateParticipant" style="-fx-font-size: 10px; -fx-padding: 4 8;"/>
+                                <Button fx:id="deleteParticipantButton" text="Delete Participant" onAction="#deleteParticipant" style="-fx-font-size: 10px; -fx-padding: 4 8;"/>
                             </HBox>
                             
-                            <Label fx:id="participantStatusLabel" textFill="RED"/>
+                            <Label fx:id="participantStatusLabel" textFill="RED" style="-fx-font-size: 10px;"/>
                         </VBox>
                         
                         <!-- Participants Table -->
-                        <VBox spacing="10.0">
-                            <Label text="Participants List" style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
-                            <TableView fx:id="participantsTable" prefHeight="200.0">
+                        <VBox spacing="8.0">
+                            <Label text="Participants List" style="-fx-font-weight: bold; -fx-font-size: 12px;"/>
+                            <TableView fx:id="participantsTable" prefHeight="150.0" style="-fx-font-size: 10px;">
                                 <columns>
-                                    <TableColumn fx:id="participantNameColumn" text="Full Name" prefWidth="200.0"/>
-                                    <TableColumn fx:id="participantEmailColumn" text="Email" prefWidth="200.0"/>
-                                    <TableColumn fx:id="participantRoleColumn" text="Role" prefWidth="100.0"/>
+                                    <TableColumn fx:id="participantNameColumn" text="Full Name" prefWidth="150.0"/>
+                                    <TableColumn fx:id="participantEmailColumn" text="Email" prefWidth="150.0"/>
+                                    <TableColumn fx:id="participantRoleColumn" text="Role" prefWidth="80.0"/>
                                 </columns>
                             </TableView>
                         </VBox>

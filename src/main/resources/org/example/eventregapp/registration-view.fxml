@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.eventregapp.RegistrationController" style="-fx-background-color: #f8f9fa;">
+    <top>
+        <VBox spacing="10.0" maxWidth="Infinity">
+            <padding>
+                <Insets bottom="10.0" left="20.0" right="20.0" top="20.0"/>
+            </padding>
+            <HBox alignment="CENTER_LEFT" spacing="20.0" maxWidth="Infinity">
+                <Label text="INVENTE'25 — Event Registrations (SSN College of Engineering)" textAlignment="CENTER">
+                    <font>
+                        <Font name="System Bold" size="18.0"/>
+                    </font>
+                </Label>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button fx:id="closeButton" text="Close" onAction="#handleClose" style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-font-size: 11px; -fx-padding: 6 12; -fx-background-radius: 3;">
+                </Button>
+            </HBox>
+            <Separator/>
+        </VBox>
+    </top>
+    
+    <center>
+        <VBox spacing="15.0" maxWidth="Infinity" maxHeight="Infinity">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+            </padding>
+            
+            <!-- Event Selection -->
+            <VBox spacing="10.0" style="-fx-background-color: #ffffff; -fx-padding: 15; -fx-background-radius: 6; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-border-radius: 6;">
+                <Label text="Select Event" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #2c3e50;"/>
+                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                    <Label text="Event:" style="-fx-font-size: 11px; -fx-text-fill: #495057;"/>
+                    <ComboBox fx:id="eventComboBox" promptText="Select an event" prefWidth="300.0" style="-fx-font-size: 11px; -fx-padding: 5;"/>
+                    <Button fx:id="loadRegistrationsButton" text="Load Registrations" onAction="#loadRegistrations" 
+                            style="-fx-background-color: #17a2b8; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 6 12; -fx-background-radius: 3; -fx-font-size: 10px;">
+                    </Button>
+                </HBox>
+                <Label fx:id="eventStatusLabel" textFill="#dc3545" style="-fx-font-weight: bold; -fx-font-size: 10px;"/>
+            </VBox>
+            
+            <!-- Registrations Table -->
+            <VBox spacing="10.0" style="-fx-background-color: #ffffff; -fx-padding: 15; -fx-background-radius: 6; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-border-radius: 6;">
+                <Label text="Event Registrations" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #2c3e50;"/>
+                <TableView fx:id="registrationsTable" prefHeight="400.0" style="-fx-background-color: white; -fx-border-color: #dee2e6; -fx-border-radius: 3; -fx-font-size: 10px;">
+                    <columns>
+                        <TableColumn fx:id="registrationParticipantColumn" text="Participant" prefWidth="200.0"/>
+                        <TableColumn fx:id="registrationEventColumn" text="Event" prefWidth="200.0"/>
+                        <TableColumn fx:id="registrationDateColumn" text="Registration Date" prefWidth="150.0"/>
+                    </columns>
+                </TableView>
+                
+                <!-- Registration Management Buttons -->
+                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                    <Button fx:id="removeRegistrationButton" text="Remove Registration" onAction="#removeRegistration" 
+                            style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 6 12; -fx-background-radius: 3; -fx-font-size: 10px;">
+                    </Button>
+                    <Button fx:id="refreshButton" text="Refresh" onAction="#refreshRegistrations" 
+                            style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 6 12; -fx-background-radius: 3; -fx-font-size: 10px;">
+                    </Button>
+                </HBox>
+                
+                <Label fx:id="registrationStatusLabel" textFill="#dc3545" style="-fx-font-weight: bold; -fx-font-size: 10px;"/>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

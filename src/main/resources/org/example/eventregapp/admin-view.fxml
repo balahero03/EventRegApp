@@ -5,16 +5,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.eventregapp.AdminController">
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.eventregapp.AdminController" style="-fx-background-color: #f8f9fa;">
     <top>
-        <VBox spacing="10.0">
+        <VBox spacing="10.0" maxWidth="Infinity">
             <padding>
                 <Insets bottom="10.0" left="20.0" right="20.0" top="20.0"/>
             </padding>
-            <HBox alignment="CENTER_LEFT" spacing="20.0">
-                <Label text="Admin Panel" textAlignment="CENTER">
+            <HBox alignment="CENTER_LEFT" spacing="20.0" maxWidth="Infinity">
+                <Label text="INVENTE'25 — Admin Panel (SSN College of Engineering)" textAlignment="CENTER">
                     <font>
-                        <Font name="System Bold" size="24.0"/>
+                        <Font name="System Bold" size="18.0"/>
                     </font>
                 </Label>
                 <Region HBox.hgrow="ALWAYS"/>
@@ -34,209 +34,140 @@
     </top>
     
     <center>
-        <TabPane tabClosingPolicy="UNAVAILABLE">
+        <TabPane tabClosingPolicy="UNAVAILABLE" maxWidth="Infinity" maxHeight="Infinity">
             <tabs>
                 <!-- Events Management Tab -->
                 <Tab text="Events Management">
-                    <VBox spacing="15.0">
+                    <VBox spacing="15.0" maxWidth="Infinity" maxHeight="Infinity">
                         <padding>
-                            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
                         </padding>
                         
                         <!-- Event Form -->
-                        <VBox spacing="15.0" style="-fx-background-color: #f8f9fa; -fx-padding: 20; -fx-background-radius: 8;">
-                            <Label text="Event Management" style="-fx-font-weight: bold; -fx-font-size: 18px; -fx-text-fill: #2c3e50;"/>
-                            <GridPane hgap="15.0" vgap="15.0">
+                        <VBox spacing="10.0" style="-fx-background-color: #f8f9fa; -fx-padding: 15; -fx-background-radius: 6;">
+                            <Label text="Event Management" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #2c3e50;"/>
+                            <GridPane hgap="10.0" vgap="10.0">
                                 <columnConstraints>
-                                    <ColumnConstraints minWidth="120.0" prefWidth="120.0"/>
-                                    <ColumnConstraints minWidth="250.0" prefWidth="250.0"/>
+                                    <ColumnConstraints minWidth="90.0" prefWidth="90.0"/>
+                                    <ColumnConstraints minWidth="180.0" prefWidth="180.0"/>
                                 </columnConstraints>
                                 <rowConstraints>
-                                    <RowConstraints minHeight="35.0"/>
-                                    <RowConstraints minHeight="35.0"/>
-                                    <RowConstraints minHeight="35.0"/>
+                                    <RowConstraints minHeight="28.0"/>
+                                    <RowConstraints minHeight="28.0"/>
+                                    <RowConstraints minHeight="28.0"/>
                                 </rowConstraints>
                                 
-                                <Label text="Event Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold; -fx-text-fill: #495057;">
-                                    <font>
-                                        <Font size="13.0"/>
-                                    </font>
-                                </Label>
+                                <Label text="Event Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold; -fx-text-fill: #495057; -fx-font-size: 11px;"/>
                                 <TextField fx:id="eventNameField" GridPane.columnIndex="1" GridPane.rowIndex="0" promptText="Enter event name" 
-                                          style="-fx-background-color: white; -fx-border-color: #ced4da; -fx-border-radius: 4; -fx-padding: 8;"/>
+                                          style="-fx-background-color: white; -fx-border-color: #ced4da; -fx-border-radius: 3; -fx-padding: 5; -fx-font-size: 11px;"/>
                                 
-                                <Label text="Date (YYYY-MM-DD):" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold; -fx-text-fill: #495057;">
-                                    <font>
-                                        <Font size="13.0"/>
-                                    </font>
-                                </Label>
+                                <Label text="Date (YYYY-MM-DD):" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold; -fx-text-fill: #495057; -fx-font-size: 11px;"/>
                                 <TextField fx:id="eventDateField" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="2024-12-31" 
-                                          style="-fx-background-color: white; -fx-border-color: #ced4da; -fx-border-radius: 4; -fx-padding: 8;"/>
+                                          style="-fx-background-color: white; -fx-border-color: #ced4da; -fx-border-radius: 3; -fx-padding: 5; -fx-font-size: 11px;"/>
                                 
-                                <Label text="Total Seats:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight: bold; -fx-text-fill: #495057;">
-                                    <font>
-                                        <Font size="13.0"/>
-                                    </font>
-                                </Label>
+                                <Label text="Total Seats:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight: bold; -fx-text-fill: #495057; -fx-font-size: 11px;"/>
                                 <TextField fx:id="totalSeatsField" GridPane.columnIndex="1" GridPane.rowIndex="2" promptText="100" 
-                                          style="-fx-background-color: white; -fx-border-color: #ced4da; -fx-border-radius: 4; -fx-padding: 8;"/>
+                                          style="-fx-background-color: white; -fx-border-color: #ced4da; -fx-border-radius: 3; -fx-padding: 5; -fx-font-size: 11px;"/>
                             </GridPane>
                             
-                            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                            <HBox spacing="10.0" alignment="CENTER_LEFT">
                                 <Button fx:id="addEventButton" text="Add Event" onAction="#addEvent" 
-                                       style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 4;">
-                                    <font>
-                                        <Font size="12.0"/>
-                                    </font>
+                                       style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 6 12; -fx-background-radius: 3; -fx-font-size: 10px;">
                                 </Button>
                                 <Button fx:id="updateEventButton" text="Update Event" onAction="#updateEvent" 
-                                       style="-fx-background-color: #17a2b8; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 4;">
-                                    <font>
-                                        <Font size="12.0"/>
-                                    </font>
+                                       style="-fx-background-color: #17a2b8; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 6 12; -fx-background-radius: 3; -fx-font-size: 10px;">
                                 </Button>
                                 <Button fx:id="deleteEventButton" text="Delete Event" onAction="#deleteEvent" 
-                                       style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 4;">
-                                    <font>
-                                        <Font size="12.0"/>
-                                    </font>
+                                       style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 6 12; -fx-background-radius: 3; -fx-font-size: 10px;">
                                 </Button>
                             </HBox>
                             
-                            <Label fx:id="eventStatusLabel" textFill="#dc3545" style="-fx-font-weight: bold;"/>
+                            <Label fx:id="eventStatusLabel" textFill="#dc3545" style="-fx-font-weight: bold; -fx-font-size: 10px;"/>
                         </VBox>
                         
                         <!-- Events Table -->
-                        <VBox spacing="15.0" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-background-radius: 8; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-border-radius: 8;">
-                            <Label text="Events List" style="-fx-font-weight: bold; -fx-font-size: 18px; -fx-text-fill: #2c3e50;"/>
-                            <TableView fx:id="eventsTable" prefHeight="200.0" style="-fx-background-color: white; -fx-border-color: #dee2e6; -fx-border-radius: 4;">
+                        <VBox spacing="10.0" style="-fx-background-color: #ffffff; -fx-padding: 15; -fx-background-radius: 6; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-border-radius: 6;">
+                            <Label text="Events List" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #2c3e50;"/>
+                            <TableView fx:id="eventsTable" prefHeight="150.0" style="-fx-background-color: white; -fx-border-color: #dee2e6; -fx-border-radius: 3; -fx-font-size: 10px;">
                                 <columns>
-                                    <TableColumn fx:id="eventNameColumn" text="Event Name" prefWidth="200.0"/>
-                                    <TableColumn fx:id="eventDateColumn" text="Date" prefWidth="120.0"/>
-                                    <TableColumn fx:id="totalSeatsColumn" text="Total Seats" prefWidth="100.0"/>
-                                    <TableColumn fx:id="availableSeatsColumn" text="Available" prefWidth="100.0"/>
-                                    <TableColumn fx:id="registrationCountColumn" text="Registered" prefWidth="100.0"/>
+                                    <TableColumn fx:id="eventNameColumn" text="Event Name" prefWidth="150.0"/>
+                                    <TableColumn fx:id="eventDateColumn" text="Date" prefWidth="100.0"/>
+                                    <TableColumn fx:id="totalSeatsColumn" text="Total Seats" prefWidth="80.0"/>
+                                    <TableColumn fx:id="availableSeatsColumn" text="Available" prefWidth="80.0"/>
+                                    <TableColumn fx:id="registrationCountColumn" text="Registered" prefWidth="80.0"/>
                                 </columns>
                             </TableView>
                             
                             <!-- Registration Management Buttons -->
-                            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                            <HBox spacing="10.0" alignment="CENTER_LEFT">
                                 <Button fx:id="viewRegistrationsButton" text="View Registrations" onAction="#viewEventRegistrations" 
-                                        style="-fx-background-color: #17a2b8; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 4;">
-                                    <font>
-                                        <Font size="12.0"/>
-                                    </font>
+                                        style="-fx-background-color: #17a2b8; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 6 12; -fx-background-radius: 3; -fx-font-size: 10px;">
                                 </Button>
                             </HBox>
                         </VBox>
                         
-                        <!-- Registrations Management -->
-                        <VBox spacing="15.0" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-background-radius: 8; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-border-radius: 8;">
-                            <Label text="Event Registrations" style="-fx-font-weight: bold; -fx-font-size: 18px; -fx-text-fill: #2c3e50;"/>
-                            <TableView fx:id="registrationsTable" prefHeight="200.0" style="-fx-background-color: white; -fx-border-color: #dee2e6; -fx-border-radius: 4;">
-                                <columns>
-                                    <TableColumn fx:id="registrationParticipantColumn" text="Participant" prefWidth="200.0"/>
-                                    <TableColumn fx:id="registrationEventColumn" text="Event" prefWidth="200.0"/>
-                                    <TableColumn fx:id="registrationDateColumn" text="Registration Date" prefWidth="150.0"/>
-                                </columns>
-                            </TableView>
-                            
-                            <!-- Remove Registration Button -->
-                            <HBox spacing="15.0" alignment="CENTER_LEFT">
-                                <Button fx:id="removeRegistrationButton" text="Remove Registration" onAction="#removeRegistration" 
-                                        style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 4;">
-                                    <font>
-                                        <Font size="12.0"/>
-                                    </font>
-                                </Button>
-                            </HBox>
-                            
-                            <Label fx:id="registrationStatusLabel" textFill="#dc3545" style="-fx-font-weight: bold;"/>
-                        </VBox>
                     </VBox>
                 </Tab>
                 
                 <!-- User Management Tab -->
                 <Tab text="User Management">
-                    <VBox spacing="15.0">
+                    <VBox spacing="15.0" maxWidth="Infinity" maxHeight="Infinity">
                         <padding>
-                            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
                         </padding>
                         
                         <!-- Create User Form -->
-                        <VBox spacing="15.0" style="-fx-background-color: #f8f9fa; -fx-padding: 20; -fx-background-radius: 8;">
-                            <Label text="Create New User" style="-fx-font-weight: bold; -fx-font-size: 18px; -fx-text-fill: #2c3e50;"/>
-                            <GridPane hgap="15.0" vgap="15.0">
+                        <VBox spacing="10.0" style="-fx-background-color: #f8f9fa; -fx-padding: 15; -fx-background-radius: 6;">
+                            <Label text="Create New User" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #2c3e50;"/>
+                            <GridPane hgap="10.0" vgap="10.0">
                                 <columnConstraints>
-                                    <ColumnConstraints minWidth="120.0" prefWidth="120.0"/>
-                                    <ColumnConstraints minWidth="250.0" prefWidth="250.0"/>
+                                    <ColumnConstraints minWidth="90.0" prefWidth="90.0"/>
+                                    <ColumnConstraints minWidth="180.0" prefWidth="180.0"/>
                                 </columnConstraints>
                                 <rowConstraints>
-                                    <RowConstraints minHeight="35.0"/>
-                                    <RowConstraints minHeight="35.0"/>
-                                    <RowConstraints minHeight="35.0"/>
-                                    <RowConstraints minHeight="35.0"/>
+                                    <RowConstraints minHeight="28.0"/>
+                                    <RowConstraints minHeight="28.0"/>
+                                    <RowConstraints minHeight="28.0"/>
+                                    <RowConstraints minHeight="28.0"/>
                                 </rowConstraints>
                                 
-                                <Label text="Full Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold; -fx-text-fill: #495057;">
-                                    <font>
-                                        <Font size="13.0"/>
-                                    </font>
-                                </Label>
+                                <Label text="Full Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold; -fx-text-fill: #495057; -fx-font-size: 11px;"/>
                                 <TextField fx:id="userNameField" GridPane.columnIndex="1" GridPane.rowIndex="0" promptText="Enter full name" 
-                                          style="-fx-background-color: white; -fx-border-color: #ced4da; -fx-border-radius: 4; -fx-padding: 8;"/>
+                                          style="-fx-background-color: white; -fx-border-color: #ced4da; -fx-border-radius: 3; -fx-padding: 5; -fx-font-size: 11px;"/>
                                 
-                                <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold; -fx-text-fill: #495057;">
-                                    <font>
-                                        <Font size="13.0"/>
-                                    </font>
-                                </Label>
+                                <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold; -fx-text-fill: #495057; -fx-font-size: 11px;"/>
                                 <TextField fx:id="userEmailField" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="Enter email" 
-                                          style="-fx-background-color: white; -fx-border-color: #ced4da; -fx-border-radius: 4; -fx-padding: 8;"/>
+                                          style="-fx-background-color: white; -fx-border-color: #ced4da; -fx-border-radius: 3; -fx-padding: 5; -fx-font-size: 11px;"/>
                                 
-                                <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight: bold; -fx-text-fill: #495057;">
-                                    <font>
-                                        <Font size="13.0"/>
-                                    </font>
-                                </Label>
+                                <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight: bold; -fx-text-fill: #495057; -fx-font-size: 11px;"/>
                                 <PasswordField fx:id="userPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="2" promptText="Enter password" 
-                                             style="-fx-background-color: white; -fx-border-color: #ced4da; -fx-border-radius: 4; -fx-padding: 8;"/>
+                                             style="-fx-background-color: white; -fx-border-color: #ced4da; -fx-border-radius: 3; -fx-padding: 5; -fx-font-size: 11px;"/>
                                 
-                                <Label text="Role:" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-font-weight: bold; -fx-text-fill: #495057;">
-                                    <font>
-                                        <Font size="13.0"/>
-                                    </font>
-                                </Label>
+                                <Label text="Role:" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-font-weight: bold; -fx-text-fill: #495057; -fx-font-size: 11px;"/>
                                 <ComboBox fx:id="userRoleComboBox" GridPane.columnIndex="1" GridPane.rowIndex="3" promptText="Select role" 
-                                         style="-fx-background-color: white; -fx-border-color: #ced4da; -fx-border-radius: 4; -fx-padding: 8;"/>
+                                         style="-fx-background-color: white; -fx-border-color: #ced4da; -fx-border-radius: 3; -fx-padding: 5; -fx-font-size: 11px;"/>
                             </GridPane>
                             
-                            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                            <HBox spacing="10.0" alignment="CENTER_LEFT">
                                 <Button fx:id="createUserButton" text="Create User" onAction="#createUser" 
-                                       style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 4;">
-                                    <font>
-                                        <Font size="12.0"/>
-                                    </font>
+                                       style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 6 12; -fx-background-radius: 3; -fx-font-size: 10px;">
                                 </Button>
                                 <Button fx:id="createAdminButton" text="Create Admin" onAction="#createAdmin" 
-                                       style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 4;">
-                                    <font>
-                                        <Font size="12.0"/>
-                                    </font>
+                                       style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 6 12; -fx-background-radius: 3; -fx-font-size: 10px;">
                                 </Button>
                             </HBox>
                             
-                            <Label fx:id="userStatusLabel" textFill="#dc3545" style="-fx-font-weight: bold;"/>
+                            <Label fx:id="userStatusLabel" textFill="#dc3545" style="-fx-font-weight: bold; -fx-font-size: 10px;"/>
                         </VBox>
                         
                         <!-- Users Table -->
-                        <VBox spacing="15.0" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-background-radius: 8; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-border-radius: 8;">
-                            <Label text="Users List" style="-fx-font-weight: bold; -fx-font-size: 18px; -fx-text-fill: #2c3e50;"/>
-                            <TableView fx:id="usersTable" prefHeight="250.0" style="-fx-background-color: white; -fx-border-color: #dee2e6; -fx-border-radius: 4;">
+                        <VBox spacing="10.0" style="-fx-background-color: #ffffff; -fx-padding: 15; -fx-background-radius: 6; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-border-radius: 6;">
+                            <Label text="Users List" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #2c3e50;"/>
+                            <TableView fx:id="usersTable" prefHeight="180.0" style="-fx-background-color: white; -fx-border-color: #dee2e6; -fx-border-radius: 3; -fx-font-size: 10px;">
                                 <columns>
-                                    <TableColumn fx:id="userNameColumn" text="Full Name" prefWidth="200.0"/>
-                                    <TableColumn fx:id="userEmailColumn" text="Email" prefWidth="200.0"/>
-                                    <TableColumn fx:id="userRoleColumn" text="Role" prefWidth="100.0"/>
+                                    <TableColumn fx:id="userNameColumn" text="Full Name" prefWidth="150.0"/>
+                                    <TableColumn fx:id="userEmailColumn" text="Email" prefWidth="150.0"/>
+                                    <TableColumn fx:id="userRoleColumn" text="Role" prefWidth="80.0"/>
                                 </columns>
                             </TableView>
                         </VBox>

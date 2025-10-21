@@ -24,7 +24,7 @@ public class HelloApplication extends Application {
 
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 500, 400);
-        stage.setTitle("Login - Event Registration System");
+        stage.setTitle("INVENTE'25 | SSN College of Engineering");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.centerOnScreen();

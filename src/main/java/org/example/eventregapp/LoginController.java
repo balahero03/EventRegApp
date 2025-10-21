@@ -78,7 +78,7 @@ public class LoginController {
 
             Stage stage = (Stage) loginButton.getScene().getWindow();
             stage.setScene(scene);
-            stage.setTitle("Admin Panel - Event Registration System");
+            stage.setTitle("INVENTE'25 | Admin Panel — SSN College of Engineering");
             stage.centerOnScreen();
 
         } catch (IOException e) {
@@ -96,7 +96,7 @@ public class LoginController {
 
             Stage stage = (Stage) loginButton.getScene().getWindow();
             stage.setScene(scene);
-            stage.setTitle("User Dashboard - Event Registration System");
+            stage.setTitle("INVENTE'25 | User Dashboard — SSN College of Engineering");
             stage.centerOnScreen();
 
         } catch (IOException e) {
