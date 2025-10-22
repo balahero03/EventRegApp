@@ -5,31 +5,41 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.eventregapp.AdminController" style="-fx-background-color: #f8f9fa;">
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.eventregapp.AdminController" 
+            style="-fx-background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">
     <top>
-        <VBox spacing="10.0" maxWidth="Infinity">
+        <VBox spacing="0.0" maxWidth="Infinity" style="-fx-background-color: rgba(255,255,255,0.95); -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
             <padding>
-                <Insets bottom="10.0" left="20.0" right="20.0" top="20.0"/>
+                <Insets bottom="15.0" left="25.0" right="25.0" top="25.0"/>
             </padding>
-            <HBox alignment="CENTER_LEFT" spacing="20.0" maxWidth="Infinity">
-                <Label text="INVENTE'25 — Admin Panel (SSN College of Engineering)" textAlignment="CENTER">
-                    <font>
-                        <Font name="System Bold" size="18.0"/>
-                    </font>
-                </Label>
+            <HBox alignment="CENTER_LEFT" spacing="25.0" maxWidth="Infinity">
+                <VBox alignment="CENTER_LEFT" spacing="2.0">
+                    <Label text="🎓 INVENTE'25" textAlignment="CENTER" style="-fx-text-fill: #2c3e50;">
+                        <font>
+                            <Font name="System Bold" size="20.0"/>
+                        </font>
+                    </Label>
+                    <Label text="Admin Panel — SSN College of Engineering" textAlignment="CENTER" style="-fx-text-fill: #7f8c8d;">
+                        <font>
+                            <Font size="11.0"/>
+                        </font>
+                    </Label>
+                </VBox>
                 <Region HBox.hgrow="ALWAYS"/>
-                <Label fx:id="welcomeLabel" text="Welcome, Admin!" textAlignment="CENTER">
-                    <font>
-                        <Font size="14.0"/>
-                    </font>
-                </Label>
-                <Button fx:id="logoutButton" text="Logout" onAction="#handleLogout" style="-fx-background-color: #dc3545; -fx-text-fill: white;">
-                    <font>
-                        <Font size="12.0"/>
-                    </font>
-                </Button>
+                <VBox alignment="CENTER_RIGHT" spacing="5.0">
+                    <Label fx:id="welcomeLabel" text="Welcome, Admin!" textAlignment="CENTER" style="-fx-text-fill: #34495e;">
+                        <font>
+                            <Font name="System Bold" size="14.0"/>
+                        </font>
+                    </Label>
+                    <Button fx:id="logoutButton" text="🚪 Logout" onAction="#handleLogout" 
+                           style="-fx-background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 16; -fx-background-radius: 20; -fx-cursor: hand;">
+                        <font>
+                            <Font size="11.0"/>
+                        </font>
+                    </Button>
+                </VBox>
             </HBox>
-            <Separator/>
         </VBox>
     </top>
     
@@ -37,71 +47,77 @@
         <TabPane tabClosingPolicy="UNAVAILABLE" maxWidth="Infinity" maxHeight="Infinity">
             <tabs>
                 <!-- Events Management Tab -->
-                <Tab text="Events Management">
-                    <VBox spacing="15.0" maxWidth="Infinity" maxHeight="Infinity">
+                <Tab text="📅 Events Management">
+                    <VBox spacing="20.0" maxWidth="Infinity" maxHeight="Infinity">
                         <padding>
-                            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
                         </padding>
                         
                         <!-- Event Form -->
-                        <VBox spacing="10.0" style="-fx-background-color: #f8f9fa; -fx-padding: 15; -fx-background-radius: 6;">
-                            <Label text="Event Management" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #2c3e50;"/>
-                            <GridPane hgap="10.0" vgap="10.0">
+                        <VBox spacing="15.0" style="-fx-background-color: rgba(255,255,255,0.9); -fx-padding: 25; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 3);">
+                            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                <Label text="🎯" style="-fx-font-size: 18px;"/>
+                                <Label text="Event Management" style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #2c3e50;"/>
+                            </HBox>
+                            <GridPane hgap="15.0" vgap="15.0">
                                 <columnConstraints>
-                                    <ColumnConstraints minWidth="90.0" prefWidth="90.0"/>
-                                    <ColumnConstraints minWidth="180.0" prefWidth="180.0"/>
+                                    <ColumnConstraints minWidth="120.0" prefWidth="120.0"/>
+                                    <ColumnConstraints minWidth="200.0" prefWidth="250.0"/>
                                 </columnConstraints>
                                 <rowConstraints>
-                                    <RowConstraints minHeight="28.0"/>
-                                    <RowConstraints minHeight="28.0"/>
-                                    <RowConstraints minHeight="28.0"/>
+                                    <RowConstraints minHeight="35.0"/>
+                                    <RowConstraints minHeight="35.0"/>
+                                    <RowConstraints minHeight="35.0"/>
                                 </rowConstraints>
                                 
-                                <Label text="Event Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold; -fx-text-fill: #495057; -fx-font-size: 11px;"/>
+                                <Label text="📝 Event Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold; -fx-text-fill: #34495e; -fx-font-size: 12px;"/>
                                 <TextField fx:id="eventNameField" GridPane.columnIndex="1" GridPane.rowIndex="0" promptText="Enter event name" 
-                                          style="-fx-background-color: white; -fx-border-color: #ced4da; -fx-border-radius: 3; -fx-padding: 5; -fx-font-size: 11px;"/>
+                                          style="-fx-background-color: #f8f9fa; -fx-border-color: #e9ecef; -fx-border-radius: 8; -fx-padding: 10; -fx-font-size: 12px; -fx-background-radius: 8; -fx-border-width: 2;"/>
                                 
-                                <Label text="Date (YYYY-MM-DD):" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold; -fx-text-fill: #495057; -fx-font-size: 11px;"/>
+                                <Label text="📅 Date (YYYY-MM-DD):" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold; -fx-text-fill: #34495e; -fx-font-size: 12px;"/>
                                 <TextField fx:id="eventDateField" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="2024-12-31" 
-                                          style="-fx-background-color: white; -fx-border-color: #ced4da; -fx-border-radius: 3; -fx-padding: 5; -fx-font-size: 11px;"/>
+                                          style="-fx-background-color: #f8f9fa; -fx-border-color: #e9ecef; -fx-border-radius: 8; -fx-padding: 10; -fx-font-size: 12px; -fx-background-radius: 8; -fx-border-width: 2;"/>
                                 
-                                <Label text="Total Seats:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight: bold; -fx-text-fill: #495057; -fx-font-size: 11px;"/>
+                                <Label text="🪑 Total Seats:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight: bold; -fx-text-fill: #34495e; -fx-font-size: 12px;"/>
                                 <TextField fx:id="totalSeatsField" GridPane.columnIndex="1" GridPane.rowIndex="2" promptText="100" 
-                                          style="-fx-background-color: white; -fx-border-color: #ced4da; -fx-border-radius: 3; -fx-padding: 5; -fx-font-size: 11px;"/>
+                                          style="-fx-background-color: #f8f9fa; -fx-border-color: #e9ecef; -fx-border-radius: 8; -fx-padding: 10; -fx-font-size: 12px; -fx-background-radius: 8; -fx-border-width: 2;"/>
                             </GridPane>
                             
-                            <HBox spacing="10.0" alignment="CENTER_LEFT">
-                                <Button fx:id="addEventButton" text="Add Event" onAction="#addEvent" 
-                                       style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 6 12; -fx-background-radius: 3; -fx-font-size: 10px;">
+                            <HBox spacing="12.0" alignment="CENTER_LEFT">
+                                <Button fx:id="addEventButton" text="➕ Add Event" onAction="#addEvent" 
+                                       style="-fx-background: linear-gradient(135deg, #28a745 0%, #20c997 100%); -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 20; -fx-font-size: 11px; -fx-cursor: hand;">
                                 </Button>
-                                <Button fx:id="updateEventButton" text="Update Event" onAction="#updateEvent" 
-                                       style="-fx-background-color: #17a2b8; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 6 12; -fx-background-radius: 3; -fx-font-size: 10px;">
+                                <Button fx:id="updateEventButton" text="✏️ Update Event" onAction="#updateEvent" 
+                                       style="-fx-background: linear-gradient(135deg, #17a2b8 0%, #6f42c1 100%); -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 20; -fx-font-size: 11px; -fx-cursor: hand;">
                                 </Button>
-                                <Button fx:id="deleteEventButton" text="Delete Event" onAction="#deleteEvent" 
-                                       style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 6 12; -fx-background-radius: 3; -fx-font-size: 10px;">
+                                <Button fx:id="deleteEventButton" text="🗑️ Delete Event" onAction="#deleteEvent" 
+                                       style="-fx-background: linear-gradient(135deg, #dc3545 0%, #e74c3c 100%); -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 20; -fx-font-size: 11px; -fx-cursor: hand;">
                                 </Button>
                             </HBox>
                             
-                            <Label fx:id="eventStatusLabel" textFill="#dc3545" style="-fx-font-weight: bold; -fx-font-size: 10px;"/>
+                            <Label fx:id="eventStatusLabel" textFill="#e74c3c" style="-fx-font-weight: bold; -fx-font-size: 11px; -fx-background-color: #fdf2f2; -fx-padding: 8; -fx-background-radius: 6;"/>
                         </VBox>
                         
                         <!-- Events Table -->
-                        <VBox spacing="10.0" style="-fx-background-color: #ffffff; -fx-padding: 15; -fx-background-radius: 6; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-border-radius: 6;">
-                            <Label text="Events List" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #2c3e50;"/>
-                            <TableView fx:id="eventsTable" prefHeight="150.0" style="-fx-background-color: white; -fx-border-color: #dee2e6; -fx-border-radius: 3; -fx-font-size: 10px;">
+                        <VBox spacing="15.0" style="-fx-background-color: rgba(255,255,255,0.9); -fx-padding: 25; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 3);">
+                            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                <Label text="📊" style="-fx-font-size: 18px;"/>
+                                <Label text="Events List" style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #2c3e50;"/>
+                            </HBox>
+                            <TableView fx:id="eventsTable" prefHeight="200.0" style="-fx-background-color: #f8f9fa; -fx-border-color: #e9ecef; -fx-border-radius: 10; -fx-font-size: 11px; -fx-background-radius: 10; -fx-border-width: 2;">
                                 <columns>
-                                    <TableColumn fx:id="eventNameColumn" text="Event Name" prefWidth="150.0"/>
-                                    <TableColumn fx:id="eventDateColumn" text="Date" prefWidth="100.0"/>
-                                    <TableColumn fx:id="totalSeatsColumn" text="Total Seats" prefWidth="80.0"/>
-                                    <TableColumn fx:id="availableSeatsColumn" text="Available" prefWidth="80.0"/>
-                                    <TableColumn fx:id="registrationCountColumn" text="Registered" prefWidth="80.0"/>
+                                    <TableColumn fx:id="eventNameColumn" text="📝 Event Name" prefWidth="180.0" style="-fx-font-weight: bold;"/>
+                                    <TableColumn fx:id="eventDateColumn" text="📅 Date" prefWidth="120.0" style="-fx-font-weight: bold;"/>
+                                    <TableColumn fx:id="totalSeatsColumn" text="🪑 Total Seats" prefWidth="100.0" style="-fx-font-weight: bold;"/>
+                                    <TableColumn fx:id="availableSeatsColumn" text="✅ Available" prefWidth="100.0" style="-fx-font-weight: bold;"/>
+                                    <TableColumn fx:id="registrationCountColumn" text="👥 Registered" prefWidth="100.0" style="-fx-font-weight: bold;"/>
                                 </columns>
                             </TableView>
                             
                             <!-- Registration Management Buttons -->
-                            <HBox spacing="10.0" alignment="CENTER_LEFT">
-                                <Button fx:id="viewRegistrationsButton" text="View Registrations" onAction="#viewEventRegistrations" 
-                                        style="-fx-background-color: #17a2b8; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 6 12; -fx-background-radius: 3; -fx-font-size: 10px;">
+                            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                <Button fx:id="viewRegistrationsButton" text="👀 View Registrations" onAction="#viewEventRegistrations" 
+                                        style="-fx-background: linear-gradient(135deg, #17a2b8 0%, #6f42c1 100%); -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 20; -fx-font-size: 11px; -fx-cursor: hand;">
                                 </Button>
                             </HBox>
                         </VBox>
@@ -110,66 +126,79 @@
                 </Tab>
                 
                 <!-- User Management Tab -->
-                <Tab text="User Management">
-                    <VBox spacing="15.0" maxWidth="Infinity" maxHeight="Infinity">
+                <Tab text="👥 User Management">
+                    <VBox spacing="20.0" maxWidth="Infinity" maxHeight="Infinity">
                         <padding>
-                            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
                         </padding>
                         
                         <!-- Create User Form -->
-                        <VBox spacing="10.0" style="-fx-background-color: #f8f9fa; -fx-padding: 15; -fx-background-radius: 6;">
-                            <Label text="Create New User" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #2c3e50;"/>
-                            <GridPane hgap="10.0" vgap="10.0">
+                        <VBox spacing="15.0" style="-fx-background-color: rgba(255,255,255,0.9); -fx-padding: 25; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 3);">
+                            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                <Label text="👤" style="-fx-font-size: 18px;"/>
+                                <Label text="Create New User" style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #2c3e50;"/>
+                            </HBox>
+                            <GridPane hgap="15.0" vgap="15.0">
                                 <columnConstraints>
-                                    <ColumnConstraints minWidth="90.0" prefWidth="90.0"/>
-                                    <ColumnConstraints minWidth="180.0" prefWidth="180.0"/>
+                                    <ColumnConstraints minWidth="120.0" prefWidth="120.0"/>
+                                    <ColumnConstraints minWidth="200.0" prefWidth="250.0"/>
                                 </columnConstraints>
                                 <rowConstraints>
-                                    <RowConstraints minHeight="28.0"/>
-                                    <RowConstraints minHeight="28.0"/>
-                                    <RowConstraints minHeight="28.0"/>
-                                    <RowConstraints minHeight="28.0"/>
+                                    <RowConstraints minHeight="35.0"/>
+                                    <RowConstraints minHeight="35.0"/>
+                                    <RowConstraints minHeight="35.0"/>
+                                    <RowConstraints minHeight="35.0"/>
                                 </rowConstraints>
                                 
-                                <Label text="Full Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold; -fx-text-fill: #495057; -fx-font-size: 11px;"/>
+                                <Label text="👤 Full Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold; -fx-text-fill: #34495e; -fx-font-size: 12px;"/>
                                 <TextField fx:id="userNameField" GridPane.columnIndex="1" GridPane.rowIndex="0" promptText="Enter full name" 
-                                          style="-fx-background-color: white; -fx-border-color: #ced4da; -fx-border-radius: 3; -fx-padding: 5; -fx-font-size: 11px;"/>
+                                          style="-fx-background-color: #f8f9fa; -fx-border-color: #e9ecef; -fx-border-radius: 8; -fx-padding: 10; -fx-font-size: 12px; -fx-background-radius: 8; -fx-border-width: 2;"/>
                                 
-                                <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold; -fx-text-fill: #495057; -fx-font-size: 11px;"/>
+                                <Label text="📧 Email:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold; -fx-text-fill: #34495e; -fx-font-size: 12px;"/>
                                 <TextField fx:id="userEmailField" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="Enter email" 
-                                          style="-fx-background-color: white; -fx-border-color: #ced4da; -fx-border-radius: 3; -fx-padding: 5; -fx-font-size: 11px;"/>
+                                          style="-fx-background-color: #f8f9fa; -fx-border-color: #e9ecef; -fx-border-radius: 8; -fx-padding: 10; -fx-font-size: 12px; -fx-background-radius: 8; -fx-border-width: 2;"/>
                                 
-                                <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight: bold; -fx-text-fill: #495057; -fx-font-size: 11px;"/>
+                                <Label text="🔒 Password:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight: bold; -fx-text-fill: #34495e; -fx-font-size: 12px;"/>
                                 <PasswordField fx:id="userPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="2" promptText="Enter password" 
-                                             style="-fx-background-color: white; -fx-border-color: #ced4da; -fx-border-radius: 3; -fx-padding: 5; -fx-font-size: 11px;"/>
+                                             style="-fx-background-color: #f8f9fa; -fx-border-color: #e9ecef; -fx-border-radius: 8; -fx-padding: 10; -fx-font-size: 12px; -fx-background-radius: 8; -fx-border-width: 2;"/>
                                 
-                                <Label text="Role:" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-font-weight: bold; -fx-text-fill: #495057; -fx-font-size: 11px;"/>
+                                <Label text="🎭 Role:" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-font-weight: bold; -fx-text-fill: #34495e; -fx-font-size: 12px;"/>
                                 <ComboBox fx:id="userRoleComboBox" GridPane.columnIndex="1" GridPane.rowIndex="3" promptText="Select role" 
-                                         style="-fx-background-color: white; -fx-border-color: #ced4da; -fx-border-radius: 3; -fx-padding: 5; -fx-font-size: 11px;"/>
+                                         style="-fx-background-color: #f8f9fa; -fx-border-color: #e9ecef; -fx-border-radius: 8; -fx-padding: 10; -fx-font-size: 12px; -fx-background-radius: 8; -fx-border-width: 2;"/>
                             </GridPane>
                             
-                            <HBox spacing="10.0" alignment="CENTER_LEFT">
-                                <Button fx:id="createUserButton" text="Create User" onAction="#createUser" 
-                                       style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 6 12; -fx-background-radius: 3; -fx-font-size: 10px;">
+                            <HBox spacing="12.0" alignment="CENTER_LEFT">
+                                <Button fx:id="createUserButton" text="👤 Create User" onAction="#createUser" 
+                                       style="-fx-background: linear-gradient(135deg, #28a745 0%, #20c997 100%); -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 20; -fx-font-size: 11px; -fx-cursor: hand;">
                                 </Button>
-                                <Button fx:id="createAdminButton" text="Create Admin" onAction="#createAdmin" 
-                                       style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 6 12; -fx-background-radius: 3; -fx-font-size: 10px;">
+                                <Button fx:id="createAdminButton" text="👑 Create Admin" onAction="#createAdmin" 
+                                       style="-fx-background: linear-gradient(135deg, #dc3545 0%, #e74c3c 100%); -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 20; -fx-font-size: 11px; -fx-cursor: hand;">
                                 </Button>
                             </HBox>
                             
-                            <Label fx:id="userStatusLabel" textFill="#dc3545" style="-fx-font-weight: bold; -fx-font-size: 10px;"/>
+                            <Label fx:id="userStatusLabel" textFill="#e74c3c" style="-fx-font-weight: bold; -fx-font-size: 11px; -fx-background-color: #fdf2f2; -fx-padding: 8; -fx-background-radius: 6;"/>
                         </VBox>
                         
                         <!-- Users Table -->
-                        <VBox spacing="10.0" style="-fx-background-color: #ffffff; -fx-padding: 15; -fx-background-radius: 6; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-border-radius: 6;">
-                            <Label text="Users List" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #2c3e50;"/>
-                            <TableView fx:id="usersTable" prefHeight="180.0" style="-fx-background-color: white; -fx-border-color: #dee2e6; -fx-border-radius: 3; -fx-font-size: 10px;">
+                        <VBox spacing="15.0" style="-fx-background-color: rgba(255,255,255,0.9); -fx-padding: 25; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 3);">
+                            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                <Label text="👥" style="-fx-font-size: 18px;"/>
+                                <Label text="Users List" style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #2c3e50;"/>
+                            </HBox>
+                            <TableView fx:id="usersTable" prefHeight="200.0" style="-fx-background-color: #f8f9fa; -fx-border-color: #e9ecef; -fx-border-radius: 10; -fx-font-size: 11px; -fx-background-radius: 10; -fx-border-width: 2;">
                                 <columns>
-                                    <TableColumn fx:id="userNameColumn" text="Full Name" prefWidth="150.0"/>
-                                    <TableColumn fx:id="userEmailColumn" text="Email" prefWidth="150.0"/>
-                                    <TableColumn fx:id="userRoleColumn" text="Role" prefWidth="80.0"/>
+                                    <TableColumn fx:id="userNameColumn" text="👤 Full Name" prefWidth="180.0" style="-fx-font-weight: bold;"/>
+                                    <TableColumn fx:id="userEmailColumn" text="📧 Email" prefWidth="200.0" style="-fx-font-weight: bold;"/>
+                                    <TableColumn fx:id="userRoleColumn" text="🎭 Role" prefWidth="100.0" style="-fx-font-weight: bold;"/>
                                 </columns>
                             </TableView>
+                            
+                            <!-- User Management Buttons -->
+                            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                <Button fx:id="deleteUserButton" text="🗑️ Delete Selected User" onAction="#deleteUser" 
+                                        style="-fx-background: linear-gradient(135deg, #dc3545 0%, #e74c3c 100%); -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 20; -fx-font-size: 11px; -fx-cursor: hand;">
+                                </Button>
+                            </HBox>
                         </VBox>
                     </VBox>
                 </Tab>

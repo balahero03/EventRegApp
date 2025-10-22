@@ -119,11 +119,18 @@ public class RegistrationService {
      */
     public static List<Registration> getEventRegistrations(Event event) {
         try (Session session = DatabaseUtil.getSession()) {
-            String query = "FROM Registration r WHERE r.event = :event ORDER BY r.registrationDate DESC";
+            // Use JOIN FETCH to eagerly load participant and event data
+            String query = "SELECT r FROM Registration r " +
+                    "JOIN FETCH r.participant p " +
+                    "JOIN FETCH r.event e " +
+                    "WHERE r.event = :event " +
+                    "ORDER BY r.registrationDate DESC";
             return session.createQuery(query, Registration.class)
                     .setParameter("event", event)
                     .list();
         } catch (Exception e) {
+            System.err.println("Error loading event registrations: " + e.getMessage());
+            e.printStackTrace();
             return List.of();
         }
     }

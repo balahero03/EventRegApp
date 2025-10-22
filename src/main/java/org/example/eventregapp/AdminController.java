@@ -10,8 +10,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.example.eventregapp.model.Event;
 import org.example.eventregapp.model.Participant;
-import org.example.eventregapp.model.Registration;
-import org.example.eventregapp.service.RegistrationService;
 import org.example.eventregapp.util.DatabaseUtil;
 import org.example.eventregapp.util.ValidationUtil;
 import org.hibernate.Session;
@@ -68,6 +66,8 @@ public class AdminController {
     private Button createUserButton;
     @FXML
     private Button createAdminButton;
+    @FXML
+    private Button deleteUserButton;
     @FXML
     private Label userStatusLabel;
     @FXML
@@ -265,6 +265,52 @@ public class AdminController {
     @FXML
     private void createAdmin() {
         createParticipant("admin");
+    }
+
+    @FXML
+    private void deleteUser() {
+        Participant selectedUser = usersTable.getSelectionModel().getSelectedItem();
+        if (selectedUser == null) {
+            userStatusLabel.setText("Please select a user to delete");
+            return;
+        }
+
+        // Prevent admin from deleting themselves
+        if (selectedUser.getParticipantId().equals(currentUser.getParticipantId())) {
+            userStatusLabel.setText("You cannot delete your own account");
+            return;
+        }
+
+        // Show confirmation dialog
+        Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmationAlert.setTitle("Confirm User Deletion");
+        confirmationAlert.setHeaderText("Delete User");
+        confirmationAlert.setContentText("Are you sure you want to delete user: " + selectedUser.getFullName() + " ("
+                + selectedUser.getEmail() + ")?\n\nThis action cannot be undone.");
+
+        confirmationAlert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
+
+        confirmationAlert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.YES) {
+                try (Session session = DatabaseUtil.getSession()) {
+                    Transaction transaction = session.beginTransaction();
+
+                    // First delete all registrations for this user
+                    session.createQuery("DELETE FROM Registration WHERE participant.participantId = :userId")
+                            .setParameter("userId", selectedUser.getParticipantId())
+                            .executeUpdate();
+
+                    // Then delete the user
+                    session.delete(selectedUser);
+                    transaction.commit();
+
+                    userStatusLabel.setText("User deleted successfully");
+                    loadUsers();
+                } catch (Exception e) {
+                    userStatusLabel.setText("Error deleting user: " + e.getMessage());
+                }
+            }
+        });
     }
 
     private void createParticipant(String role) {

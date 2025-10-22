@@ -5,67 +5,85 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.eventregapp.RegistrationController" style="-fx-background-color: #f8f9fa;">
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.eventregapp.RegistrationController" 
+            style="-fx-background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">
     <top>
-        <VBox spacing="10.0" maxWidth="Infinity">
+        <VBox spacing="0.0" maxWidth="Infinity" style="-fx-background-color: rgba(255,255,255,0.95); -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
             <padding>
-                <Insets bottom="10.0" left="20.0" right="20.0" top="20.0"/>
+                <Insets bottom="15.0" left="25.0" right="25.0" top="25.0"/>
             </padding>
-            <HBox alignment="CENTER_LEFT" spacing="20.0" maxWidth="Infinity">
-                <Label text="INVENTE'25 — Event Registrations (SSN College of Engineering)" textAlignment="CENTER">
-                    <font>
-                        <Font name="System Bold" size="18.0"/>
-                    </font>
-                </Label>
+            <HBox alignment="CENTER_LEFT" spacing="25.0" maxWidth="Infinity">
+                <VBox alignment="CENTER_LEFT" spacing="2.0">
+                    <Label text="🎓 INVENTE'25" textAlignment="CENTER" style="-fx-text-fill: #2c3e50;">
+                        <font>
+                            <Font name="System Bold" size="20.0"/>
+                        </font>
+                    </Label>
+                    <Label text="Event Registrations — SSN College of Engineering" textAlignment="CENTER" style="-fx-text-fill: #7f8c8d;">
+                        <font>
+                            <Font size="11.0"/>
+                        </font>
+                    </Label>
+                </VBox>
                 <Region HBox.hgrow="ALWAYS"/>
-                <Button fx:id="closeButton" text="Close" onAction="#handleClose" style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-font-size: 11px; -fx-padding: 6 12; -fx-background-radius: 3;">
+                <Button fx:id="closeButton" text="❌ Close" onAction="#handleClose" 
+                       style="-fx-background: linear-gradient(135deg, #6c757d 0%, #495057 100%); -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 16; -fx-background-radius: 20; -fx-cursor: hand;">
+                    <font>
+                        <Font size="11.0"/>
+                    </font>
                 </Button>
             </HBox>
-            <Separator/>
         </VBox>
     </top>
     
     <center>
-        <VBox spacing="15.0" maxWidth="Infinity" maxHeight="Infinity">
+        <VBox spacing="20.0" maxWidth="Infinity" maxHeight="Infinity">
             <padding>
-                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
             </padding>
             
             <!-- Event Selection -->
-            <VBox spacing="10.0" style="-fx-background-color: #ffffff; -fx-padding: 15; -fx-background-radius: 6; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-border-radius: 6;">
-                <Label text="Select Event" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #2c3e50;"/>
-                <HBox spacing="10.0" alignment="CENTER_LEFT">
-                    <Label text="Event:" style="-fx-font-size: 11px; -fx-text-fill: #495057;"/>
-                    <ComboBox fx:id="eventComboBox" promptText="Select an event" prefWidth="300.0" style="-fx-font-size: 11px; -fx-padding: 5;"/>
-                    <Button fx:id="loadRegistrationsButton" text="Load Registrations" onAction="#loadRegistrations" 
-                            style="-fx-background-color: #17a2b8; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 6 12; -fx-background-radius: 3; -fx-font-size: 10px;">
+            <VBox spacing="15.0" style="-fx-background-color: rgba(255,255,255,0.9); -fx-padding: 25; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 3);">
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <Label text="🎯" style="-fx-font-size: 18px;"/>
+                    <Label text="Select Event" style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #2c3e50;"/>
+                </HBox>
+                <HBox spacing="15.0" alignment="CENTER_LEFT">
+                    <Label text="📅 Event:" style="-fx-font-size: 12px; -fx-text-fill: #34495e; -fx-font-weight: bold;"/>
+                    <ComboBox fx:id="eventComboBox" promptText="Select an event" prefWidth="350.0" 
+                             style="-fx-background-color: #f8f9fa; -fx-border-color: #e9ecef; -fx-border-radius: 8; -fx-padding: 10; -fx-font-size: 12px; -fx-background-radius: 8; -fx-border-width: 2;"/>
+                    <Button fx:id="loadRegistrationsButton" text="🔍 Load Registrations" onAction="#loadRegistrations" 
+                            style="-fx-background: linear-gradient(135deg, #17a2b8 0%, #6f42c1 100%); -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 20; -fx-font-size: 11px; -fx-cursor: hand;">
                     </Button>
                 </HBox>
-                <Label fx:id="eventStatusLabel" textFill="#dc3545" style="-fx-font-weight: bold; -fx-font-size: 10px;"/>
+                <Label fx:id="eventStatusLabel" textFill="#e74c3c" style="-fx-font-weight: bold; -fx-font-size: 11px; -fx-background-color: #fdf2f2; -fx-padding: 8; -fx-background-radius: 6;"/>
             </VBox>
             
             <!-- Registrations Table -->
-            <VBox spacing="10.0" style="-fx-background-color: #ffffff; -fx-padding: 15; -fx-background-radius: 6; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-border-radius: 6;">
-                <Label text="Event Registrations" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #2c3e50;"/>
-                <TableView fx:id="registrationsTable" prefHeight="400.0" style="-fx-background-color: white; -fx-border-color: #dee2e6; -fx-border-radius: 3; -fx-font-size: 10px;">
+            <VBox spacing="15.0" style="-fx-background-color: rgba(255,255,255,0.9); -fx-padding: 25; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 3);">
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <Label text="📊" style="-fx-font-size: 18px;"/>
+                    <Label text="Event Registrations" style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #2c3e50;"/>
+                </HBox>
+                <TableView fx:id="registrationsTable" prefHeight="400.0" style="-fx-background-color: #f8f9fa; -fx-border-color: #e9ecef; -fx-border-radius: 10; -fx-font-size: 11px; -fx-background-radius: 10; -fx-border-width: 2;">
                     <columns>
-                        <TableColumn fx:id="registrationParticipantColumn" text="Participant" prefWidth="200.0"/>
-                        <TableColumn fx:id="registrationEventColumn" text="Event" prefWidth="200.0"/>
-                        <TableColumn fx:id="registrationDateColumn" text="Registration Date" prefWidth="150.0"/>
+                        <TableColumn fx:id="registrationParticipantColumn" text="👤 Participant" prefWidth="250.0" style="-fx-font-weight: bold;"/>
+                        <TableColumn fx:id="registrationEventColumn" text="📅 Event" prefWidth="250.0" style="-fx-font-weight: bold;"/>
+                        <TableColumn fx:id="registrationDateColumn" text="📆 Registration Date" prefWidth="200.0" style="-fx-font-weight: bold;"/>
                     </columns>
                 </TableView>
                 
                 <!-- Registration Management Buttons -->
-                <HBox spacing="10.0" alignment="CENTER_LEFT">
-                    <Button fx:id="removeRegistrationButton" text="Remove Registration" onAction="#removeRegistration" 
-                            style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 6 12; -fx-background-radius: 3; -fx-font-size: 10px;">
+                <HBox spacing="15.0" alignment="CENTER_LEFT">
+                    <Button fx:id="removeRegistrationButton" text="🗑️ Remove Registration" onAction="#removeRegistration" 
+                            style="-fx-background: linear-gradient(135deg, #dc3545 0%, #e74c3c 100%); -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 20; -fx-font-size: 11px; -fx-cursor: hand;">
                     </Button>
-                    <Button fx:id="refreshButton" text="Refresh" onAction="#refreshRegistrations" 
-                            style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 6 12; -fx-background-radius: 3; -fx-font-size: 10px;">
+                    <Button fx:id="refreshButton" text="🔄 Refresh" onAction="#refreshRegistrations" 
+                            style="-fx-background: linear-gradient(135deg, #28a745 0%, #20c997 100%); -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 20; -fx-font-size: 11px; -fx-cursor: hand;">
                     </Button>
                 </HBox>
                 
-                <Label fx:id="registrationStatusLabel" textFill="#dc3545" style="-fx-font-weight: bold; -fx-font-size: 10px;"/>
+                <Label fx:id="registrationStatusLabel" textFill="#e74c3c" style="-fx-font-weight: bold; -fx-font-size: 11px; -fx-background-color: #fdf2f2; -fx-padding: 8; -fx-background-radius: 6;"/>
             </VBox>
         </VBox>
     </center>

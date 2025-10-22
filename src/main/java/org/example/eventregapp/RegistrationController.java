@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.example.eventregapp.model.Event;
 import org.example.eventregapp.model.Registration;
@@ -66,15 +65,31 @@ public class RegistrationController {
     private void setupRegistrationTableColumns() {
         registrationParticipantColumn.setCellValueFactory(cellData -> {
             Registration registration = cellData.getValue();
-            return new javafx.beans.property.SimpleStringProperty(
-                    registration.getParticipant().getFullName());
+            try {
+                return new javafx.beans.property.SimpleStringProperty(
+                        registration.getParticipant().getFullName());
+            } catch (Exception e) {
+                return new javafx.beans.property.SimpleStringProperty("N/A");
+            }
         });
         registrationEventColumn.setCellValueFactory(cellData -> {
             Registration registration = cellData.getValue();
-            return new javafx.beans.property.SimpleStringProperty(
-                    registration.getEvent().getEventName());
+            try {
+                return new javafx.beans.property.SimpleStringProperty(
+                        registration.getEvent().getEventName());
+            } catch (Exception e) {
+                return new javafx.beans.property.SimpleStringProperty("N/A");
+            }
         });
-        registrationDateColumn.setCellValueFactory(new PropertyValueFactory<>("registrationDate"));
+        registrationDateColumn.setCellValueFactory(cellData -> {
+            Registration registration = cellData.getValue();
+            try {
+                return new javafx.beans.property.SimpleStringProperty(
+                        registration.getRegistrationDate().toString());
+            } catch (Exception e) {
+                return new javafx.beans.property.SimpleStringProperty("N/A");
+            }
+        });
     }
 
     private void loadEvents() {
@@ -97,7 +112,8 @@ public class RegistrationController {
         }
 
         try {
-            List<Registration> registrations = RegistrationService.getEventRegistrations(selectedEvent);
+            // Load registrations with proper eager fetching to avoid lazy loading issues
+            List<Registration> registrations = loadRegistrationsWithParticipants(selectedEvent);
             registrationsList.clear();
             registrationsList.addAll(registrations);
             registrationsTable.setItems(registrationsList);
@@ -108,6 +124,26 @@ public class RegistrationController {
 
         } catch (Exception e) {
             eventStatusLabel.setText("Error loading registrations: " + e.getMessage());
+            e.printStackTrace(); // For debugging
+        }
+    }
+
+    private List<Registration> loadRegistrationsWithParticipants(Event event) {
+        try (Session session = DatabaseUtil.getSession()) {
+            // Use JOIN FETCH to eagerly load participant and event data
+            String query = "SELECT r FROM Registration r " +
+                    "JOIN FETCH r.participant p " +
+                    "JOIN FETCH r.event e " +
+                    "WHERE r.event = :event " +
+                    "ORDER BY r.registrationDate DESC";
+
+            return session.createQuery(query, Registration.class)
+                    .setParameter("event", event)
+                    .list();
+        } catch (Exception e) {
+            System.err.println("Error loading registrations: " + e.getMessage());
+            e.printStackTrace();
+            return List.of();
         }
     }
 
