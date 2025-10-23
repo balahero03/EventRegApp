@@ -40,7 +40,7 @@ public class LoginController {
         String password = passwordField.getText().trim();
 
         if (email.isEmpty() || password.isEmpty()) {
-            statusLabel.setText("Please enter both email and password");
+            showError("Please enter both email and password");
             return;
         }
 
@@ -49,9 +49,12 @@ public class LoginController {
             Participant participant = AuthenticationService.authenticate(email, password);
 
             if (participant == null) {
-                statusLabel.setText("Invalid email or password");
+                showError("Invalid email or password");
                 return;
             }
+
+            // Clear any previous errors
+            clearError();
 
             // Redirect based on role from Participant table
             if (AuthenticationService.isAdmin(participant)) {
@@ -59,11 +62,11 @@ public class LoginController {
             } else if (AuthenticationService.isUser(participant)) {
                 redirectToUserPanel(participant);
             } else {
-                statusLabel.setText("Invalid user role: " + AuthenticationService.getUserRole(participant));
+                showError("Invalid user role: " + AuthenticationService.getUserRole(participant));
             }
 
         } catch (Exception e) {
-            statusLabel.setText("Login error: " + e.getMessage());
+            showError("Login error: " + e.getMessage());
             e.printStackTrace(); // For debugging
         }
     }
@@ -179,14 +182,38 @@ public class LoginController {
                     Transaction transaction = session.beginTransaction();
                     session.save(participant);
                     transaction.commit();
-                    statusLabel.setText("Account created successfully! Please login with your credentials.");
+                    showSuccess("Account created successfully! Please login with your credentials.");
                     // Clear the login fields
                     emailField.clear();
                     passwordField.clear();
                 }
             } catch (Exception e) {
-                statusLabel.setText("Error creating account: " + e.getMessage());
+                showError("Error creating account: " + e.getMessage());
             }
         });
+    }
+
+    /**
+     * Show error message with styled background
+     */
+    private void showError(String message) {
+        statusLabel.setText(message);
+        statusLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 11px; -fx-padding: 8; -fx-background-color: #fdf2f2; -fx-background-radius: 6; -fx-text-fill: #e74c3c;");
+    }
+
+    /**
+     * Clear error message and remove background
+     */
+    private void clearError() {
+        statusLabel.setText("");
+        statusLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 11px; -fx-padding: 8;");
+    }
+
+    /**
+     * Show success message with green styling
+     */
+    private void showSuccess(String message) {
+        statusLabel.setText(message);
+        statusLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 11px; -fx-padding: 8; -fx-background-color: #f0fdf4; -fx-background-radius: 6; -fx-text-fill: #16a34a;");
     }
 }

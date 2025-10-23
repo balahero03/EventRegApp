@@ -23,10 +23,10 @@ public class HelloApplication extends Application {
         LoginTest.testLoginConnection();
 
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 500, 400);
+        Scene scene = new Scene(fxmlLoader.load(), 700, 650);
         stage.setTitle("INVENTE'25 | SSN College of Engineering");
         stage.setScene(scene);
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.centerOnScreen();
         stage.show();
     }
