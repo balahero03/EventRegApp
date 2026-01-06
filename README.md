@@ -11,8 +11,7 @@
 **A Modern Desktop Application for Event Registration Management**
 
 Developed for **INVENTE'25** - SSN College of Engineering
-
-[Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Architecture](#-architecture) • [Documentation](#-documentation)
+[Installation](#-installation) 
 
 </div>
 
