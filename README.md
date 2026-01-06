@@ -1,198 +1,35 @@
-# 🎓 EventRegApp - Event Registration Management System
+# Event Registration System
 
-<div align="center">
+A JavaFX desktop application for managing event registrations with Oracle database integration using Hibernate ORM.
 
-![Java](https://img.shields.io/badge/Java-17-orange?style=for-the-badge&logo=java)
-![JavaFX](https://img.shields.io/badge/JavaFX-17.0.2-blue?style=for-the-badge&logo=java)
-![Hibernate](https://img.shields.io/badge/Hibernate-5.6.15-59666C?style=for-the-badge&logo=hibernate)
-![Oracle](https://img.shields.io/badge/Oracle-Database-F80000?style=for-the-badge&logo=oracle)
-![Maven](https://img.shields.io/badge/Maven-3.6+-C71A36?style=for-the-badge&logo=apache-maven)
+## Features
 
-**A Modern Desktop Application for Event Registration Management**
+- **User Authentication**: Login system with email/password
+- **Event Management**: View available events with seat availability
+- **Registration System**: Register/unregister for events
+- **User Dashboard**: View personal registrations
+- **Database Integration**: Oracle database with Hibernate ORM
 
-Developed for **INVENTE'25** - SSN College of Engineering
+## Prerequisites
 
-[Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Architecture](#-architecture) • [Documentation](#-documentation)
+- Java 17 or higher
+- Oracle Database (XE version recommended)
+- Maven 3.6+
 
-</div>
+## Database Setup
 
----
+1. Create an Oracle database instance
+2. Run the SQL script in `db/query.sql` to create tables and sample data
+3. Update database connection details in `src/main/resources/hibernate.cfg.xml`
 
-## 📋 Table of Contents
+## Sample Data
 
-- [Overview](#-overview)
-- [Features](#-features)
-- [Technology Stack](#-technology-stack)
-- [Prerequisites](#-prerequisites)
-- [Installation](#-installation)
-- [Database Setup](#-database-setup)
-- [Running the Application](#-running-the-application)
-- [Project Structure](#-project-structure)
-- [Architecture](#-architecture)
-- [JavaFX Components](#-javafx-components)
-- [Hibernate ORM Details](#-hibernate-orm-details)
-- [Maven Configuration](#-maven-configuration)
-- [Database Schema](#-database-schema)
-- [API Documentation](#-api-documentation)
-- [Screenshots](#-screenshots)
-- [Sample Data](#-sample-data)
-- [Troubleshooting](#-troubleshooting)
-- [Future Enhancements](#-future-enhancements)
-- [Contributing](#-contributing)
-- [License](#-license)
+The application comes with sample data:
+- **Admin User**: admin@test.com / adminpass
+- **Regular User**: john.doe@test.com / userpass
+- **Sample Events**: JavaFX Workshop, Hibernate for Beginners, Oracle SQL Masterclass
 
----
-
-## 🌟 Overview
-
-**EventRegApp** is a comprehensive desktop application built with JavaFX and Hibernate ORM for managing event registrations in educational institutions. The application provides a robust platform for administrators to manage events and users, while allowing participants to browse and register for available events.
-
-### Key Highlights
-
-- ✅ **Role-Based Access Control** - Separate interfaces for Admin and User roles
-- ✅ **Real-Time Seat Management** - Automatic seat count updates using database triggers
-- ✅ **Modern UI/UX** - JavaFX-based responsive interface with gradient designs
-- ✅ **Data Integrity** - Comprehensive validation and database constraints
-- ✅ **ORM-Powered** - Hibernate for seamless database operations
-- ✅ **Scalable Architecture** - MVC pattern with service layer
-
----
-
-## 🚀 Features
-
-### For Users (Participants)
-
-| Feature | Description |
-|---------|-------------|
-| 🔐 **Secure Authentication** | Email/password login with validation |
-| 📅 **Browse Events** | View all available upcoming events |
-| ✅ **Event Registration** | Register for events with instant confirmation |
-| ❌ **Unregister** | Cancel event registrations |
-| 👤 **Personalized Dashboard** | See available seats and event details |
-| 🔄 **Real-Time Updates** | Seat availability updates instantly |
-
-### For Administrators
-
-| Feature | Description |
-|---------|-------------|
-| 🎯 **Event Management** | Create, Read, Update, Delete events |
-| 👥 **User Management** | Create and manage user accounts |
-| 📊 **Registration Tracking** | View all event registrations |
-| 🗑️ **Registration Control** | Remove specific registrations |
-| 📈 **Comprehensive View** | See all events (past, present, future) |
-| ⚙️ **Account Creation** | Create both admin and user accounts |
-
----
-
-## 💻 Technology Stack
-
-### Core Technologies
-
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| **Java** | 17 | Core programming language |
-| **JavaFX** | 17.0.2 | Desktop GUI framework |
-| **Hibernate** | 5.6.15.Final | Object-Relational Mapping (ORM) |
-| **Oracle Database** | 19c XE | Relational database |
-| **Maven** | 3.6+ | Build and dependency management |
-| **JUnit** | 5.10.2 | Testing framework |
-
-### JavaFX Modules Used
-
-- `javafx-controls` - UI controls (Button, TextField, TableView, etc.)
-- `javafx-fxml` - FXML markup language support
-- `javafx-graphics` - Graphics and scene rendering
-
-### Maven Plugins
-
-- `maven-compiler-plugin` (3.13.0) - Java compilation
-- `javafx-maven-plugin` (0.0.8) - JavaFX application runner
-- `exec-maven-plugin` (3.1.0) - Command execution
-
----
-
-## 📦 Prerequisites
-
-Before running this application, ensure you have:
-
-1. **Java Development Kit (JDK) 17 or higher**
-   ```bash
-   java -version  # Should show version 17+
-   ```
-
-2. **Apache Maven 3.6 or higher**
-   ```bash
-   mvn -version  # Should show version 3.6+
-   ```
-
-3. **Oracle Database XE (Express Edition) 19c or 21c**
-   - Download from [Oracle Website](https://www.oracle.com/database/technologies/xe-downloads.html)
-   - Default port: 1521
-   - Database SID: xe
-
-4. **IDE (Optional but Recommended)**
-   - IntelliJ IDEA
-   - Eclipse
-   - NetBeans
-
----
-
-## 🔧 Installation
-
-### Step 1: Clone the Repository
-
-```bash
-git clone https://github.com/yourusername/EventRegApp.git
-cd EventRegApp
-```
-
-### Step 2: Configure Database Connection
-
-Edit `src/main/resources/hibernate.cfg.xml`:
-
-```xml
-<property name="connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>
-<property name="connection.username">YOUR_USERNAME</property>
-<property name="connection.password">YOUR_PASSWORD</property>
-```
-
-### Step 3: Install Dependencies
-
-```bash
-mvn clean install
-```
-
----
-
-## 🗄️ Database Setup
-
-### Option 1: SQL Developer
-
-1. Open Oracle SQL Developer
-2. Connect to your database instance
-3. Open `db/query.sql`
-4. Execute the entire script
-
-### Option 2: SQL*Plus Command Line
-
-```bash
-sqlplus system/your_password@localhost:1521/xe
-@db/query.sql
-exit
-```
-
-### What the Script Creates
-
-- **3 Tables**: PARTICIPANTS, EVENTS, REGISTRATIONS
-- **3 Sequences**: For auto-incrementing primary keys
-- **4 Triggers**: For data integrity and automation
-- **Sample Data**: 2 users (admin, regular) and 5 events
-
----
-
-## 🏃 Running the Application
-
-### Using Maven
+## Running the Application
 
 ```bash
 # Compile the project
